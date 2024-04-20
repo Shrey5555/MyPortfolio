@@ -275,3 +275,24 @@
 
 })(jQuery);
 
+const startDate = new Date('October 1, 2023');
+const currentDate = new Date();
+
+let diffMonths = (currentDate.getFullYear() - startDate.getFullYear()) * 12 + currentDate.getMonth() - startDate.getMonth();
+
+if (currentDate.getDate() >= 1) {
+	diffMonths += 1;
+}
+
+const years = Math.floor(diffMonths / 12);
+const months = diffMonths % 12;
+
+let experience = '';
+if (years > 0) {
+	experience += years + (years === 1 ? ' year ' : ' years ');
+}
+if (months > 0 || (years === 0 && months === 0)) {
+	experience += months + (months === 1 ? ' month' : ' months');
+}
+
+document.getElementById('experience').textContent = experience;
